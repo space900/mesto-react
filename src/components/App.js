@@ -1,30 +1,17 @@
-import logo from './logo_header.svg';
+import React from 'react';
+
+import Header from './Header';
+import Main from './Main';
+import Footer from './Footer';
+import PopupWithForm from './PopupWithForm';
 
 
 function App() {
   return (
     <div class="page">
-        <header className="header">
-            <img src={logo} alt="логотип Место" class="header__logo" />
-        </header>
+        <Header />
 
-        <main class="content">
-            <section class="profile">
-                <img src="<%=require('./images/avatar-3.jpg')%>" alt="аватар пользователя" class="profile__picture" />
-                <div class="info">
-                    <h1 class="info__title">Somebody</h1>
-                    <button class="info__edit-btn" aria-label="Редактировать" type="button"></button>
-                    <p class="info__subtitle">dreamer</p>
-                </div>
-                <button class="profile__btn" aria-label="Добавить" type="button"></button>
-            </section>
-
-            <div class="photo-grid">
-                <ul class="photo-grid__list">
-
-                </ul>
-            </div>
-        </main>
+        <Main />
 
         <template class="photo-grid__list-template" id="tmpl">
             <li class="photo-grid__card">
@@ -38,9 +25,8 @@ function App() {
             </li>
 
         </template>
-        <footer class="footer">
-            <p class="footer__copyright">&#169; Andrey Khnykin 2021 Mesto Russia</p>
-        </footer>
+        
+        <Footer />
         <div class="popup popup_texts">
             <div class="popup__container">
                 <button class="popup__close popup__close_texts" aria-label="Закрыть" type="button"></button>
