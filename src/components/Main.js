@@ -1,23 +1,12 @@
 import React from "react";
 
-function handleEditAvatarClick() {
-  document.querySelector(".popup_avatar").classList.add("popup_is-opened");
-}
 
-function handleEditProfileClick() {
-  document.querySelector(".popup_texts").classList.add("popup_is-opened");
-}
-
-function handleAddPlaceClick() {
-  document.querySelector(".popup_cards").classList.add("popup_is-opened");
-}
-
-function Main() {
+function Main({ onEditProfile, onEditAvatar, onAddPlace}) {
   return (
     <main className="content">
       <section className="profile">
         <img
-            onClick={handleEditAvatarClick}
+            onClick={onEditAvatar}
           src="<%=require('./images/avatar-3.jpg')%>"
           alt="аватар пользователя"
           className="profile__picture"
@@ -25,7 +14,7 @@ function Main() {
         <div className="info">
           <h1 className="info__title">Somebody</h1>
           <button
-            onClick={handleEditProfileClick}
+            onClick={onEditProfile}
             className="info__edit-btn"
             aria-label="Редактировать"
             type="button"
@@ -33,7 +22,7 @@ function Main() {
           <p className="info__subtitle">dreamer</p>
         </div>
         <button
-          onClick={handleAddPlaceClick}
+          onClick={onAddPlace}
           className="profile__btn"
           aria-label="Добавить"
           type="button"
