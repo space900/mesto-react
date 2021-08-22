@@ -58,7 +58,6 @@ function App() {
         isOpen={isEditProfilePopupOpen}
         onClose={closeAllPopups}
       >
-        <fieldset className="popup__form">
           <input
             id="popup__nickname"
             type="text"
@@ -79,7 +78,7 @@ function App() {
             maxLength="200"
           />
           <span className="popup__job-error popup__text-input"></span>
-        </fieldset>
+        
       </PopupWithForm>
       <PopupWithForm
         title="Новое место"
@@ -88,7 +87,7 @@ function App() {
         isOpen={isAddPlacePopupOpen}
         onClose={closeAllPopups}
       >
-        <fieldset className="popup__form" name="field" method="get">
+        
           <input
             id="popup__photo-name"
             type="text"
@@ -107,7 +106,7 @@ function App() {
             className="popup__text_field_link popup__text popup__text_input"
           />
           <span className="popup__link-error popup__text-input"></span>
-        </fieldset>
+        
       </PopupWithForm>
       <PopupWithForm
         title="Обновить аватар"
@@ -116,7 +115,7 @@ function App() {
         isOpen={isEditAvatarPopupOpen}
         onClose={closeAllPopups}
       >
-        <fieldset className="popup__form" method="get">
+        
           <input
             id="popup__avatar-name"
             type="url"
@@ -126,7 +125,7 @@ function App() {
             required
           />
           <span className="popup__avatar-name-error popup__text-input"></span>
-        </fieldset>
+        
       </PopupWithForm>
       <PopupWithForm title="Вы уверены?" name="remove" buttonTitle="Да" />
       <ImagePopup card={selectedCard} onClose={closeAllPopups} />

@@ -4,6 +4,7 @@ function ImagePopup({ card, onClose }) {
     const imageFallbackContainer = useRef(null); 
 
   return (
+      
     <div className={`popup ${card.link ? "popup_is-opened" : ""}`}>
       <figure className="popup__position" ref={imageFallbackContainer}>
         <button
