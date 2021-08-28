@@ -79,23 +79,24 @@ class Api {
     }).then(this._checkResponse);
   }
 
-  setLike(cardId) {
-    return fetch(`${this._address}/${this._groupId}/cards/likes/${cardId}`, {
-      method: "PUT",
+  setLike(id, isLiked) {
+    const method = isLiked ? "PUT" : "DELETE";
+    return fetch(`${this._address}/${this._groupId}/cards/likes/${id}`, {
+      method: method,
       headers: {
         authorization: this._token,
       },
     }).then(this._checkResponse);
   }
 
-  deleteLike(cardId) {
-    return fetch(`${this._address}/${this._groupId}/cards/likes/${cardId}`, {
-      method: "DELETE",
-      headers: {
-        authorization: this._token,
-      },
-    }).then(this._checkResponse);
-  }
+  // deleteLike(cardId) {
+  //   return fetch(`${this._address}/${this._groupId}/cards/likes/${cardId}`, {
+  //     method: "DELETE",
+  //     headers: {
+  //       authorization: this._token,
+  //     },
+  //   }).then(this._checkResponse);
+  // }
 }
 
 const api = new Api({

@@ -54,7 +54,7 @@ function App() {
     const isLiked = card.likes.some(i => i._id === currentUser._id);
     api.setLike(card._id, !isLiked)
       .then(newCard => {
-        setCards(state => state.map(c => c._id === card._id ? newCard : c));
+        setCards(cards => cards.map(c => c._id === card._id ? newCard : c));
     })
     .catch(err => console.log(`Ошибка при попытке поставить лайк: ${err}`))
   }
