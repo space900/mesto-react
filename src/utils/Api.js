@@ -21,7 +21,7 @@ class Api {
     }).then(this._checkResponse);
   }
 
-  getUserData() {
+  getUserData(data) {
     return fetch(`${this._address}/${this._groupId}/users/me`, {
       method: "PATCH",
       headers: {
@@ -29,8 +29,8 @@ class Api {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        name: nameInput.value,
-        about: jobInput.value,
+        name: data.value,
+        about: data.value,
       }),
     }).then(this._checkResponse);
   }
