@@ -100,7 +100,7 @@ class Api {
 }
 
 const api = new Api({
-  address: "https://nomoreparties.co/v1/",
+  address: "https://nomoreparties.co/v1",
   token: "47630fd7-d22e-4429-9c8d-fa77ac8ebf56",
   groupId: "cohort-26",
 })
