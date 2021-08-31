@@ -7,6 +7,7 @@ function PopupWithForm({
   onClose,
   buttonTitle,
   children,
+  onSubmit,
 }) {
   return (
     <section
@@ -20,7 +21,7 @@ function PopupWithForm({
           onClick={onClose}
         ></button>
         <h2 className="popup__title">{title}</h2>
-        <form className="popup__form" name={`${name}_form`}>
+        <form className="popup__form" name={`${name}_form`} onSubmit={onSubmit}>
           {children}
           <button
             className="popup__submit-btn popup__submit"
