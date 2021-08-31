@@ -29,8 +29,8 @@ class Api {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        name: data.value,
-        about: data.value,
+        name: data.name,
+        about: data.about,
       }),
     }).then(this._checkResponse);
   }
