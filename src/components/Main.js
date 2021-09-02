@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 import Card from "./Card";
@@ -22,7 +22,6 @@ function Main(props) {
             className="info__edit-btn"
             aria-label="Редактировать"
             type="button"
-            onClick={props.onEditProfile}
           ></button>
           <p className="info__subtitle">{currentUser.about}</p>
         </div>

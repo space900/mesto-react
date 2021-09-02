@@ -8,6 +8,7 @@ import ImagePopup from "./ImagePopup";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import api from "../utils/Api";
 import EditProfilePopup from "./EditProfilePopup";
+import EditAvatarPopup from "./EditAvatarPopup";
 
 function App() {
   const [currentUser, setCurrentUser] = React.useState(CurrentUserContext);
@@ -71,11 +72,23 @@ function App() {
     api
       .getUserData(userData)
       .then((res) => {
-        
         setCurrentUser(res);
         closeAllPopups();
       })
-      .catch((err) => console.log(`Ошибка при обновлении пользователя: ${err}`));
+      .catch((err) =>
+        console.log(`Ошибка при обновлении пользователя: ${err}`)
+      );
+  }
+
+  function handleUpdateAvatar(userData) {
+    api.changeAvatar(userData)
+      .then(res => {
+        setCurrentUser(res);
+        closeAllPopups();
+      })
+      .catch((err) =>
+        console.log(`Ошибка при обновлении аватара: ${err}`)
+      );
   }
 
   function closeAllPopups() {
@@ -107,6 +120,12 @@ function App() {
           onUpdateUser={handleUpdateUser}
         />
 
+        <EditAvatarPopup
+          isOpen={isEditAvatarPopupOpen}
+          onClose={closeAllPopups}
+          onUpdateAvatar={handleUpdateAvatar}
+          
+        />
         <PopupWithForm
           title="Новое место"
           name="addCard"
@@ -133,23 +152,7 @@ function App() {
           />
           <span className="popup__link-error popup__text-input"></span>
         </PopupWithForm>
-        <PopupWithForm
-          title="Обновить аватар"
-          name="avatar"
-          buttonTitle="Сохранить"
-          isOpen={isEditAvatarPopupOpen}
-          onClose={closeAllPopups}
-        >
-          <input
-            id="popup__avatar-name"
-            type="url"
-            placeholder="Ссылка на аватар"
-            name="avatar"
-            className="popup__text popup__text_field_name popup__text_input"
-            required
-          />
-          <span className="popup__avatar-name-error popup__text-input"></span>
-        </PopupWithForm>
+        
         <PopupWithForm title="Вы уверены?" name="remove" buttonTitle="Да" />
         <ImagePopup card={selectedCard} onClose={closeAllPopups} />
       </CurrentUserContext.Provider>

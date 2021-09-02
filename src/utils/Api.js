@@ -1,5 +1,3 @@
-import { jobInput, nameInput } from "./utils.js";
-
 class Api {
   constructor({ address, token, groupId }) {
     this._address = address;

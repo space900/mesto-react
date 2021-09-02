@@ -32,8 +32,6 @@ function EditProfilePopup(props) {
     
   }
 
-  console.log('handleSubmit');
-
   return (
     <PopupWithForm
         title="Редактировать профиль"
