@@ -35,6 +35,7 @@ class Api {
 
   getUserInfo() {
     return fetch(`${this._address}/${this._groupId}/users/me`, {
+      method: 'GET',
       headers: {
         authorization: this._token,
       },

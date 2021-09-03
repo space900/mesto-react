@@ -12,7 +12,8 @@ import EditAvatarPopup from "./EditAvatarPopup";
 import AddPlacePopup from "./AddPlacePopup";
 
 function App() {
-  const [currentUser, setCurrentUser] = React.useState(CurrentUserContext);
+  const [currentUser, setCurrentUser] = React.useState({});
+
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] =
     React.useState(false);
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] =
@@ -82,25 +83,23 @@ function App() {
   }
 
   function handleUpdateAvatar(userData) {
-    api.changeAvatar(userData)
-      .then(res => {
+    api
+      .changeAvatar(userData)
+      .then((res) => {
         setCurrentUser(res);
         closeAllPopups();
       })
-      .catch((err) =>
-        console.log(`Ошибка при обновлении аватара: ${err}`)
-      );
+      .catch((err) => console.log(`Ошибка при обновлении аватара: ${err}`));
   }
 
   function handleAddPlace(data) {
-    api.addCard(data)
-      .then(newCard => {
+    api
+      .addCard(data)
+      .then((newCard) => {
         setCards([newCard, ...cards]);
         closeAllPopups();
       })
-      .catch((err) =>
-        console.log(`Ошибка при добавлении карточки: ${err}`)
-      );
+      .catch((err) => console.log(`Ошибка при добавлении карточки: ${err}`));
   }
 
   function closeAllPopups() {
@@ -111,8 +110,8 @@ function App() {
   }
 
   return (
-    <div className="page">
-      <CurrentUserContext.Provider value={currentUser}>
+    <CurrentUserContext.Provider value={currentUser}>
+      <div className="page">
         <Header />
 
         <Main
@@ -136,16 +135,17 @@ function App() {
           isOpen={isEditAvatarPopupOpen}
           onClose={closeAllPopups}
           onUpdateAvatar={handleUpdateAvatar}
-          
         />
-        <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlace={handleAddPlace}
-          
+        <AddPlacePopup
+          isOpen={isAddPlacePopupOpen}
+          onClose={closeAllPopups}
+          onAddPlace={handleAddPlace}
         />
-        
+
         <PopupWithForm title="Вы уверены?" name="remove" buttonTitle="Да" />
         <ImagePopup card={selectedCard} onClose={closeAllPopups} />
-      </CurrentUserContext.Provider>
-    </div>
+      </div>
+    </CurrentUserContext.Provider>
   );
 }
 
